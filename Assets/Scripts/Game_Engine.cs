@@ -6,18 +6,21 @@ namespace MissileCommand
 { 
     public class Game_Engine : MonoBehaviour
     {
-        public GameObject player;
-        public GameObject enemy;
+        public GameObject player, enemy, explosionController;
+        
 
         private int enemyCount;
 
         void Start()
         {
             player = Instantiate(Resources.Load<GameObject>("Prefabs/PlayerPrefab"));
-            player.name = "PlayerObject";
+            player.name = "Player";
 
             enemy = Instantiate(Resources.Load<GameObject>("Prefabs/EnemyPrefab"));
-            enemy.name = "EnemyObject";
+            enemy.name = "Enemy";
+
+            explosionController = Instantiate(Resources.Load<GameObject>("Prefabs/ExplosionsControllerPrefab"));
+            explosionController.name = "ExplosionController";
 
             return;
         }

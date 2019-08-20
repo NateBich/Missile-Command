@@ -130,6 +130,7 @@ namespace MissileCommand
 
         public void DestroyObject()
         {
+
             DeactiveMissile();
         }
 
@@ -147,7 +148,7 @@ namespace MissileCommand
 
         private void DeactiveMissile()
         {
-            explosionCollider.SetActive(false);
+            //explosionCollider.SetActive(false);
             this.gameObject.SetActive(false);
             return;
         }

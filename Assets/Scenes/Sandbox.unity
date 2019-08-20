@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemy: {fileID: 0}
+  explosionController: {fileID: 0}
 --- !u!1 &924856996
 GameObject:
   m_ObjectHideFlags: 0

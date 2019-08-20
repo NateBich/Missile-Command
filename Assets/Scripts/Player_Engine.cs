@@ -7,11 +7,11 @@ namespace MissileCommand
 {
     public class Player_Engine : MonoBehaviour
     {
-        public List<GameObject> missiles = new List<GameObject>();
+        private List<GameObject> missiles = new List<GameObject>();
         private readonly int numOfPooledMissiles = 20;
         public int numOfMissilesRemaining;
 
-        public List<GameObject> launchStations = new List<GameObject>();
+        private List<GameObject> launchStations = new List<GameObject>();
         public int numOfLaunchStations = 2;
 
         public string missileName = "Missile";

@@ -7,7 +7,7 @@ namespace MissileCommand
     public class Enemy_Engine : MonoBehaviour
     {
 
-        public List<GameObject> missiles = new List<GameObject>();
+        private List<GameObject> missiles = new List<GameObject>();
         private readonly int numOfPooledMissiles = 20;
         private int numOfMissilesRemaining;//, health;
         private float waitTimer, spawningTimer;
