@@ -7,6 +7,8 @@ namespace MissileCommand
 {
     public class Player_Engine : MonoBehaviour
     {
+        private Pooling_Engine pooler;
+
         private List<GameObject> missiles = new List<GameObject>();
         private readonly int numOfPooledMissiles = 20;
         public int numOfMissilesRemaining;
@@ -25,11 +27,13 @@ namespace MissileCommand
         void Start()
         {
             playerReady = false;
-            GameObject pooler = Resources.Load<GameObject>("Prefabs/PoolerPrefab");
+            pooler = GetComponent<Pooling_Engine>();
+
             GameObject missile = Resources.Load<GameObject>("Prefabs/PlayerMissilePrefab");
             GameObject launchStation = Resources.Load<GameObject>("Prefabs/LaunchStationPrefab");
 
-            MissilePooler(pooler, missile);
+            missiles = pooler.PoolObjects(missiles, missile, this.gameObject, numOfPooledMissiles, missileName, "Missiles");
+
             LaunchStationPooler(pooler, launchStation);
 
             playerReady = true;
@@ -42,7 +46,7 @@ namespace MissileCommand
             if (missiles != null)
                 missiles.Clear();
 
-            missiles = pooler.GetComponent<Pooling_Engine>().PoolObjects(missile, new Vector3(0f, -20f, 0f), numOfPooledMissiles, missileName);
+            missiles = pooler.GetComponent<Pooling_Engine>().ObjectsPool(missile, new Vector3(0f, -20f, 0f), numOfPooledMissiles, missileName);
 
             GameObject missileParent = new GameObject
             {
@@ -54,12 +58,12 @@ namespace MissileCommand
                 missiles[i].transform.SetParent(missileParent.transform);
         }
 
-        private void LaunchStationPooler(GameObject pooler, GameObject launchStation)
+        private void LaunchStationPooler(Pooling_Engine pooler, GameObject launchStation)
         {
             if (launchStations != null)
                 launchStations.Clear();
 
-            launchStations = pooler.GetComponent<Pooling_Engine>().PoolObjects(launchStation, new Vector3(0f, -20f, 0f), numOfLaunchStations, launchStationName);
+            launchStations = pooler.ObjectsPool(launchStation, new Vector3(0f, -20f, 0f), numOfLaunchStations, launchStationName);
 
             GameObject launchStationParent = new GameObject
             {

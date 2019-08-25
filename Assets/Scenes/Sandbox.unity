@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1268f515fc0d24f93f42c36ed8531a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooler: {fileID: 0}
   player: {fileID: 0}
   enemy: {fileID: 0}
   explosionController: {fileID: 0}

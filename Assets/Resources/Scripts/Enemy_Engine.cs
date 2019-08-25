@@ -6,7 +6,7 @@ namespace MissileCommand
 {
     public class Enemy_Engine : MonoBehaviour
     {
-
+        private Pooling_Engine pooler;
         private List<GameObject> missiles = new List<GameObject>();
         private readonly int numOfPooledMissiles = 20;
         private int numOfMissilesRemaining;//, health;
@@ -17,28 +17,12 @@ namespace MissileCommand
 
         void Start()
         {
-            GameObject pooler = Resources.Load<GameObject>("Prefabs/PoolerPrefab");
+            pooler = GetComponent<Pooling_Engine>();
+
             GameObject missile = Resources.Load<GameObject>("Prefabs/EnemyMissilePrefab");
-            MissilePooler(pooler, missile);
+            missiles = pooler.PoolObjects(missiles, missile, this.gameObject, numOfPooledMissiles, missileName, "Missiles");
 
             gameObject.SetActive(false);
-        }
-
-        private void MissilePooler(GameObject pooler, GameObject missile)
-        {
-            if (missiles != null)
-                missiles.Clear();
-
-            missiles = pooler.GetComponent<Pooling_Engine>().PoolObjects(missile, new Vector3(0f, -20f, 0f), numOfPooledMissiles, missileName);
-
-            GameObject missileParent = new GameObject
-            {
-                name = "Missiles"
-            };
-            missileParent.transform.SetParent(this.transform);
-            missileParent.transform.position = new Vector3(0f, -20f, 0f);
-            for (int i = 0; i < numOfPooledMissiles; i++)
-                missiles[i].transform.SetParent(missileParent.transform);
         }
 
         private void OnEnable()

@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3633733070799268806}
+  - component: {fileID: 8064777523638201744}
   - component: {fileID: 7076259845459076428}
   m_Layer: 0
-  m_Name: Explosion_Engine
+  m_Name: ExplosionsControllerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8064777523638201744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3332163216519056528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d2c344eb7c7cc41bdd242649b382dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7076259845459076428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,3 +56,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9efc6edf22620f4a8efb242e1dda743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooler: {fileID: 0}
+  explosionsTypeA: []
+  explosionTypeAName: ExplosionTypeA
